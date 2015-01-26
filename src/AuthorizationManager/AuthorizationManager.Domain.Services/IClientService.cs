@@ -13,7 +13,7 @@ namespace AuthorizationManager.Domain.Services
 
         int CreateWithAuthorizationCodeFlow(string clientName, string clientUri, string clientRedirectUri, string logoutRedirectUri);
 
-        int CreateWithClientCredentialsFlow(string clientName, string clientUri, string clientRedirectUri, string logoutRedirectUri);
+        int CreateWithClientCredentialsFlow(string clientName, string clientUri);
 
         IEnumerable<Client> GetClients();
 
@@ -39,6 +39,7 @@ namespace AuthorizationManager.Domain.Services
 
         void FixRedirectLogOutUrl(int clientId, int redirectUriId, string uri);
         
-        Client FindById(string id);
+        Client FindById(int id);
+        void DeleteClient(int id);
     }
 }

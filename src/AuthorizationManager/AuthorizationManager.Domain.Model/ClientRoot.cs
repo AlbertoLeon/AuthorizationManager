@@ -39,11 +39,13 @@ namespace AuthorizationManager.Domain.Model
         {
             var client = new Client();
             client.ClientId = Guid.NewGuid().ToString();
-            client.ClientSecrets.Add(this.GenerateSecret());
             client.ClientName = clientName;
+            client.ClientUri = clientUri;
             client.Flow = flow;
 
             this.Client = client;
+
+            client.ClientSecrets.Add(this.GenerateSecret());
         }
 
         /// <summary>
@@ -76,6 +78,13 @@ namespace AuthorizationManager.Domain.Model
                         Uri = clientRedirectUri
                     }
                 );
+
+            clientRoot.Client.PostLogoutRedirectUris.Add(
+                    new ClientPostLogoutRedirectUri
+                    {
+                        Uri = logoutRedirectUri
+                    }
+                );
             return clientRoot;
         }
 
@@ -94,6 +103,14 @@ namespace AuthorizationManager.Domain.Model
                         Uri = clientRedirectUri
                     }
                 );
+
+            clientRoot.Client.PostLogoutRedirectUris.Add(
+                new ClientPostLogoutRedirectUri
+                {
+                    Uri = logoutRedirectUri
+                }
+            );
+
             return clientRoot;
         }
 

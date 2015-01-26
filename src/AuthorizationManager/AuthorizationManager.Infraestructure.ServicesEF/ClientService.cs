@@ -27,6 +27,8 @@ namespace AuthorizationManager.Infraestructure.ServicesEF
 
             _clientConfigurationDbContext.Clients.Add(clientRoot.Client);
             _clientConfigurationDbContext.SaveChanges();
+
+            return clientRoot.Client.Id;
         }
 
         public int CreateWithAuthorizationCodeFlow(string clientName, string clientUri, string clientRedirectUri, string logoutRedirectUri)
@@ -36,14 +38,18 @@ namespace AuthorizationManager.Infraestructure.ServicesEF
 
             _clientConfigurationDbContext.Clients.Add(clientRoot.Client);
             _clientConfigurationDbContext.SaveChanges();
+
+            return clientRoot.Client.Id;
         }
 
-        public int CreateWithClientCredentialsFlow(string clientName, string clientUri, string clientRedirectUri, string logoutRedirectUri)
+        public int CreateWithClientCredentialsFlow(string clientName, string clientUri)
         {
             var clientRoot = ClientRoot.CreateWithClientCredentials(clientName, clientUri);
 
             _clientConfigurationDbContext.Clients.Add(clientRoot.Client);
             _clientConfigurationDbContext.SaveChanges();
+
+            return clientRoot.Client.Id;
         }
 
         public IEnumerable<Client> GetClients()
@@ -122,7 +128,25 @@ namespace AuthorizationManager.Infraestructure.ServicesEF
 
         public Client FindById(int id)
         {
-            return _clientConfigurationDbContext.Clients.Single(x => x.Id == id);
+            return _clientConfigurationDbContext.Clients
+                .Include("ClientSecrets")
+                .Include("RedirectUris")
+                .Include("PostLogoutRedirectUris")
+                .Include("ScopeRestrictions")
+                .Include("IdentityProviderRestrictions")
+                .Include("Claims")
+                .Include("CustomGrantTypeRestrictions")
+                
+                .Single(x => x.Id == id);
+        }
+
+        public void DeleteClient(int id)
+        {
+            var client = _clientConfigurationDbContext.Clients.Single(x => x.Id == id);
+
+            _clientConfigurationDbContext.Clients.Remove(client);
+
+            _clientConfigurationDbContext.SaveChanges();
         }
     }
 }

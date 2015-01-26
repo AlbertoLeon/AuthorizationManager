@@ -164,11 +164,14 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Clients\Index.cshtml" />
+    <Content Include="Views\Clients\AddWithImplicitFlow.cshtml" />
+    <Content Include="Views\Clients\Delete.cshtml" />
+    <Content Include="Views\Clients\Details.cshtml" />
+    <Content Include="Views\Clients\AddWithClientCredentialsFlow.cshtml" />
+    <Content Include="Views\Clients\AddWithAuthorizationCodeFlow.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -184,6 +187,10 @@
     <ProjectReference Include="..\AuthorizationManager.Domain.Services\AuthorizationManager.Domain.Services.csproj">
       <Project>{61AFF034-C0A5-4576-9CC7-05D0969BB7B7}</Project>
       <Name>AuthorizationManager.Domain.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AuthorizationManager.Infraestructure.ServicesEF\AuthorizationManager.Infraestructure.ServicesEF.csproj">
+      <Project>{DA082721-B546-4DF6-B5E5-A51E62241E1F}</Project>
+      <Name>AuthorizationManager.Infraestructure.ServicesEF</Name>
     </ProjectReference>
     <ProjectReference Include="..\AuthorizationManager\AuthorizationManager.Core.csproj">
       <Project>{b6b4fa75-5ddc-4f3e-b88d-d07fae173182}</Project>

@@ -28,7 +28,7 @@ namespace AutorizationManager.MVCSite.Models
         public string RedirectLogOutUri { get; set; }
     }
 
-    public class ClientCredentials
+    public class ClientWithClientCredentialsFlowCreateViewModel
     {
         public string Name { get; set; }
 

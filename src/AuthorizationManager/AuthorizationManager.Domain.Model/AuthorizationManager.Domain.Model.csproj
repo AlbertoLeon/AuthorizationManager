@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="ClientRoot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScopeRoot.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AuthorizationManager\AuthorizationManager.Core.csproj">

@@ -21,9 +21,14 @@ namespace AuthorizationManager.Core.FromThinktectureIdentityServer.EntityFramewo
 {
     public class ClientConfigurationDbContext : BaseDbContext
     {
+        public ClientConfigurationDbContext()
+        {
+            
+        }
         public ClientConfigurationDbContext(string connectionString)
             : base(connectionString)
         {
+
         }
 
         public DbSet<Client> Clients { get; set; }
@@ -42,6 +47,8 @@ namespace AuthorizationManager.Core.FromThinktectureIdentityServer.EntityFramewo
                 .HasMany(x => x.IdentityProviderRestrictions).WithRequired(x => x.Client).WillCascadeOnDelete();
             modelBuilder.Entity<Client>()
                 .HasMany(x => x.Claims).WithRequired(x => x.Client).WillCascadeOnDelete();
+            modelBuilder.Entity<Client>()
+                .HasMany(x => x.ClientSecrets).WithRequired(x => x.Client).WillCascadeOnDelete();
         }
     }
 }

@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="AutorizationManager.MVCSite.MvcApplication" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="AutorizationManager.MVCSite.AutorizationManagerMvcSite" Language="C#" %>

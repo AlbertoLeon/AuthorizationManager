@@ -1,0 +1,170 @@
+﻿@model AuthorizationManager.Core.FromThinktectureIdentityServer.EntityFramework.Entities.Client
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Client @Model.ClientName</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Enabled)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Enabled)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClientName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClientName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClientUri)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ClientUri)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Flow)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Flow)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ClientSecrets)
+        </dt>
+        <dd>
+            @foreach (var secret in Model.ClientSecrets)
+            {
+                <p>@secret.Value</p>
+            }
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LogoUri)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LogoUri)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model=>model.RedirectUris)
+        </dt>
+        
+        <dd>
+            @foreach (var redirectUri in Model.RedirectUris)
+            {
+                <p>@redirectUri.Uri</p>
+            }
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PostLogoutRedirectUris)
+        </dt>
+
+        <dd>
+            @foreach (var postLogOutUri in Model.PostLogoutRedirectUris)
+            {
+                <p>@postLogOutUri.Uri</p>
+            }
+        </dd>        
+        <dt>
+            @Html.DisplayNameFor(model => model.RequireConsent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RequireConsent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AllowRememberConsent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AllowRememberConsent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdentityTokenLifetime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdentityTokenLifetime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccessTokenLifetime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccessTokenLifetime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AuthorizationCodeLifetime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AuthorizationCodeLifetime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AbsoluteRefreshTokenLifetime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AbsoluteRefreshTokenLifetime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SlidingRefreshTokenLifetime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SlidingRefreshTokenLifetime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AllowLocalLogin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AllowLocalLogin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IncludeJwtId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IncludeJwtId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AlwaysSendClientClaims)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AlwaysSendClientClaims)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrefixClientClaims)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrefixClientClaims)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

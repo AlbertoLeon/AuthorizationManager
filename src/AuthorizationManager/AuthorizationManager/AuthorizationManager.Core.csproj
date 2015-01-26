@@ -71,11 +71,21 @@
     <Compile Include="FromThinktectureIdentityServer\Models\IdentityProvider.cs" />
     <Compile Include="FromThinktectureIdentityServer\Models\Scope.cs" />
     <Compile Include="FromThinktectureIdentityServer\Models\ScopeClaim.cs" />
+    <Compile Include="Migrations\201501261337192_fix-clients.cs" />
+    <Compile Include="Migrations\201501261337192_fix-clients.Designer.cs">
+      <DependentUpon>201501261337192_fix-clients.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201501261337192_fix-clients.resx">
+      <DependentUpon>201501261337192_fix-clients.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

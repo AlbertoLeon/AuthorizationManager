@@ -6,113 +6,91 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Enabled)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ClientName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ClientUri)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LogoUri)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RequireConsent)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AllowRememberConsent)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IdentityTokenLifetime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AccessTokenLifetime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AuthorizationCodeLifetime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AbsoluteRefreshTokenLifetime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SlidingRefreshTokenLifetime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AllowLocalLogin)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IncludeJwtId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AlwaysSendClientClaims)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PrefixClientClaims)
-        </th>
-        <th></th>
-    </tr>
+<div class="panel panel-default">
+    <div class="panel-heading">Create a client</div>
+    <div class="panel-body">
+        <div class="col-md-12 column">
+            <div class="list-group">
+                <a href="@Url.Action("AddWithImplicitFlow")" class="list-group-item">
+                    <h4 class="list-group-item-heading">Implicit</h4>
+                    <p class="list-group-item-text">A client whos code runs directly in brower linke SPAs. It doesn't need to send the client secret.</p>
+                </a>
+                <a href="@Url.Action("AddWithAuthorizationCodeFlow")" class="list-group-item">
+                    <h4 class="list-group-item-heading">Authorization Code</h4>
+                    <p class="list-group-item-text">A client whos code runs in a server side like PHP, Java, Ruby, ASP.NET MVC, ASP.NET Webforms</p>
+                </a>
+                <a href="@Url.Action("AddWithClientCredentialsFlow")" class="list-group-item">
+                    <h4 class="list-group-item-heading">Client Credentials</h4>
+                    <p class="list-group-item-text">A client that is an allowed application that doesn't need a user logged to request resources. For security it must run in server.</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row clearfix">
+    <div class="col-md-12 column">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Enabled)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ClientName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ClientUri)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Flow)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AllowLocalLogin)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IncludeJwtId)
+                </th>
+                <th></th>
+            </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Enabled)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ClientName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ClientUri)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LogoUri)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RequireConsent)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AllowRememberConsent)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IdentityTokenLifetime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AccessTokenLifetime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AuthorizationCodeLifetime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AbsoluteRefreshTokenLifetime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SlidingRefreshTokenLifetime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AllowLocalLogin)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IncludeJwtId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AlwaysSendClientClaims)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PrefixClientClaims)
-        </td>
-        <td>
-            @Html.ActionLink("Create", "Create", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-        </td>
-    </tr>
-}
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Enabled)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ClientName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ClientUri)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Flow)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AlwaysSendClientClaims)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PrefixClientClaims)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |
+                        @if (!item.Enabled)
+                        {
+                            @Html.ActionLink("Enable", "Enable", new {id = item.Id})
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Disable", "Disable", new { id = item.Id })
+                        }
+                         |
+                        
+                    </td>
+                </tr>
+            }
 
-</table>
+        </table>
+    </div>
+</div>

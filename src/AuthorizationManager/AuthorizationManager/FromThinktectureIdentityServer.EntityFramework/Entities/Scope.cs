@@ -21,30 +21,35 @@ namespace AuthorizationManager.Core.FromThinktectureIdentityServer.EntityFramewo
 {
     public class Scope
     {
+        public Scope()
+        {
+            this.ScopeClaims = new HashSet<ScopeClaim>();
+        }
+
         [Key]
-        public virtual int Id { get; set; }
-        public virtual bool Enabled { get; set; }
+        public int Id { get; set; }
+        public bool Enabled { get; set; }
         
         [Required]
         [StringLength(200)]
-        public virtual string Name { get; set; }
+        public string Name { get; set; }
         
         [StringLength(200)]
-        public virtual string DisplayName { get; set; }
+        public string DisplayName { get; set; }
         
         [StringLength(1000)]
-        public virtual string Description { get; set; }
+        public string Description { get; set; }
         
-        public virtual bool Required { get; set; }
-        public virtual bool Emphasize { get; set; }
-        public virtual int Type { get; set; }
-        public virtual ICollection<ScopeClaim> ScopeClaims { get; set; }
-        public virtual bool IncludeAllClaimsForUser { get; set; }
+        public bool Required { get; set; }
+        public bool Emphasize { get; set; }
+        public int Type { get; set; }
+        public ICollection<ScopeClaim> ScopeClaims { get; set; }
+        public bool IncludeAllClaimsForUser { get; set; }
         
         [StringLength(200)]
-        public virtual string ClaimsRule { get; set; }
+        public string ClaimsRule { get; set; }
         
-        public virtual bool ShowInDiscoveryDocument { get; set; }
+        public bool ShowInDiscoveryDocument { get; set; }
 
     }
 }

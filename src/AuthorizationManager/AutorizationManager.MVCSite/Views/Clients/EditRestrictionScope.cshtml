@@ -1,0 +1,65 @@
+﻿@model AutorizationManager.MVCSite.Models.ClientRestrictionScopesViewModel
+
+@{
+    ViewBag.Title = "Edit RestrictionScopes";
+}
+
+<h2>Edit RestrictionScopes for @Model.ClientDisplayName</h2>
+<div class="panel panel-default col-md-6 column">
+    <div class="panel-heading">Default scopes</div>
+    <div class="panel-body">
+        <div class="col-md-6 row">
+            <div class="list-group">
+                <div class="list-group-item" ngRepeat="defaultScope in defaultScopes">
+                    <h4 class="list-group-item-heading">{{defaultScope}}</h4>
+                    <span class="btn btn-default" ngShow="defaultScope.CanBeAdded">Add to restriction scope</span>
+                    <span class="btn btn-default">Show claims</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 row">
+            <div class="list-group">
+                <div class="list-group-item" ngrepeat="customScope in customScopes">
+                    <h4 class="list-group-item-heading">{{defaultScope}}</h4>
+                    <span class="btn btn-default" ngshow="customScope.CanBeAdded">Add to restriction scope</span>
+                    <span class="btn btn-default">Show claims</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-default col-md-6 column">
+    <div class="panel-heading">RestrictionScopes</div>
+    <div class="panel-body">
+        <div class="col-md-6 row">
+            <div class="list-group">
+                <div class="list-group-item" ngrepeat="currentScope in currentScopes">
+                    <h4 class="list-group-item-heading">{{currentScope}}</h4>
+                    <span class="btn btn-default" ngshow="defaultScope.CanBeAdded">Remove</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
+    <script type="text/javascript">
+        var defaultScopes = JSON.parse(@Model.DefaultScopes);
+        var customScopes = JSON.parse(@Model.CustomScopes);
+        var restrictionScopes = JSON.parse(@Model.ScopeRestrictions);
+        angular.module("manageRestrictionScopes")
+            .constant("config", {
+                defaultScopes: defaultScopes,
+                customScopes: customScopes,
+                restrictionScopes: restrictionScopes,
+                addScopeUrl:@Url.Action("AddRestrictionScope"),
+                removeScopeUrl:@Url.Action("RemoveRestrictionScope")
+            })
+        ;
+
+        angular.bootstrap(document, ['demo']);
+    </script>
+}

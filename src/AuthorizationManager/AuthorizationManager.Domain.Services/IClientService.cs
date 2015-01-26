@@ -41,5 +41,9 @@ namespace AuthorizationManager.Domain.Services
         
         Client FindById(int id);
         void DeleteClient(int id);
+
+        void AddRestrictionScope(int clientId, string name);
+        
+        void RemoveRestrictionScope(int clientId, int restrictionScopeId);
     }
 }

@@ -52,5 +52,20 @@ namespace AuthorizationManager.Domain.Model
 
             return scopeRoot;
         }
+
+        public void FixName(string name)
+        {
+            this.Scope.Name = name;
+        }
+
+        public void FixDisplayName(string displayName)
+        {
+            this.Scope.DisplayName = displayName;
+        }
+
+        public void Description(string description)
+        {
+            this.Scope.Description = description;
+        }
     }
 }

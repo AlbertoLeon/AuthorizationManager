@@ -4,18 +4,23 @@ using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Web;
 using System.Web.Mvc;
+using AuthorizationManager.Core.FromThinktectureIdentityServer;
+using AuthorizationManager.Core.FromThinktectureIdentityServer.EntityFramework.Entities;
 using AuthorizationManager.Domain.Services;
 using AutorizationManager.MVCSite.Models;
+using Newtonsoft.Json;
 
 namespace AutorizationManager.MVCSite.Controllers
 {
     public class ClientsController : Controller
     {
         private readonly IClientService _clientService;
+        private readonly IScopeService _scopeService;
 
-        public ClientsController(IClientService clientService)
+        public ClientsController(IClientService clientService, IScopeService scopeService)
         {
             _clientService = clientService;
+            _scopeService = scopeService;
         }
 
         // GET: Clients
@@ -91,6 +96,23 @@ namespace AutorizationManager.MVCSite.Controllers
             int clientId = _clientService.CreateWithClientCredentialsFlow(client.Name, client.Uri);
 
             return RedirectToAction("Details", new { id = clientId });
+        }
+
+
+        public ActionResult EditRestrictionScope(int id)
+        {
+            Client client = _clientService.FindById(id);
+
+
+            var clientRestrictionScopesViewModel = new ClientRestrictionScopesViewModel
+            {
+                DefaultScopes = JsonConvert.SerializeObject(Constants.ScopeToClaimsMapping),
+                ClientDisplayName = client.ClientName,
+                ClientId = id,
+                ScopeRestrictions = client.ScopeRestrictions.ToArray()
+            };
+
+            return View(clientRestrictionScopesViewModel);
         }
     }
 }

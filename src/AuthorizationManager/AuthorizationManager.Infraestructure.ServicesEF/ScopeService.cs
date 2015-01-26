@@ -1,6 +1,8 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography;
 using AuthorizationManager.Core.FromThinktectureIdentityServer.EntityFramework.DbContexts;
+using AuthorizationManager.Core.FromThinktectureIdentityServer.EntityFramework.Entities;
 using AuthorizationManager.Domain.Model;
 using AuthorizationManager.Domain.Services;
 
@@ -53,6 +55,30 @@ namespace AuthorizationManager.Infraestructure.ServicesEF
             scope.ScopeClaims.Remove(claim);
 
             _scopeConfigurationDbContext.SaveChanges();
+        }
+
+        public IEnumerable<Scope> GetScopes()
+        {
+            return _scopeConfigurationDbContext.Scopes.ToArray();
+        }
+
+        public Scope FindById(int id)
+        {
+            var scope = _scopeConfigurationDbContext.Scopes.Single(x => x.Id == id);
+            return scope;
+        }
+
+        public void UpdateScope(int id, string name, string displayName, string description)
+        {
+            var scope = _scopeConfigurationDbContext.Scopes.Single(x => x.Id == id);
+            ScopeRoot scopeRoot = new ScopeRoot(scope);
+
+            scopeRoot.FixName(name);
+            scopeRoot.FixDisplayName(displayName);
+            scopeRoot.Description(description);
+
+            _scopeConfigurationDbContext.SaveChanges();
+
         }
     }
 }

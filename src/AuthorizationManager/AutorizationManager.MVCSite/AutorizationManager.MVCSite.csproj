@@ -126,10 +126,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ScopesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ClientRestrictionScopesViewModel.cs" />
     <Compile Include="Models\ClientWithImplicitFlowCreateViewModel.cs" />
+    <Compile Include="Models\ScopeViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -149,6 +152,10 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\ManageRestrictionScopes\app.js" />
+    <Content Include="Scripts\ManageRestrictionScopes\controller.js" />
+    <Content Include="Scripts\ManageRestrictionScopes\directive.js" />
+    <Content Include="Scripts\ManageRestrictionScopes\services.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -172,6 +179,12 @@
     <Content Include="Views\Clients\Details.cshtml" />
     <Content Include="Views\Clients\AddWithClientCredentialsFlow.cshtml" />
     <Content Include="Views\Clients\AddWithAuthorizationCodeFlow.cshtml" />
+    <Content Include="Views\Scopes\Index.cshtml" />
+    <Content Include="Views\Scopes\Create.cshtml" />
+    <Content Include="Views\Scopes\Edit.cshtml" />
+    <Content Include="Views\Scopes\Details.cshtml" />
+    <Content Include="Views\Scopes\Delete.cshtml" />
+    <Content Include="Views\Clients\EditRestrictionScope.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

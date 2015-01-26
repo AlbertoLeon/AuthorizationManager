@@ -40,6 +40,9 @@ namespace AutorizationManager.MVCSite
             builder.RegisterType<ClientConfigurationDbContext>().AsSelf().WithParameter("connectionString", "IdSvr3Config").InstancePerRequest();
             builder.RegisterType<ClientService>().As<IClientService>().InstancePerRequest();
 
+            builder.RegisterType<ScopeConfigurationDbContext>().AsSelf().WithParameter("connectionString", "IdSvr3Config").InstancePerRequest();
+            builder.RegisterType<ScopeService>().As<IScopeService>().InstancePerRequest();
+
 
             // Set the dependency resolver to be Autofac.
             var container = builder.Build();

@@ -127,6 +127,7 @@
     <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ScopesController.cs" />
+    <Compile Include="Controllers\TemplatesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -152,10 +153,8 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\ManageRestrictionScopes\app.js" />
     <Content Include="Scripts\ManageRestrictionScopes\controller.js" />
     <Content Include="Scripts\ManageRestrictionScopes\directive.js" />
-    <Content Include="Scripts\ManageRestrictionScopes\services.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -185,6 +184,7 @@
     <Content Include="Views\Scopes\Details.cshtml" />
     <Content Include="Views\Scopes\Delete.cshtml" />
     <Content Include="Views\Clients\EditRestrictionScope.cshtml" />
+    <Content Include="Views\Templates\AuthScope.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

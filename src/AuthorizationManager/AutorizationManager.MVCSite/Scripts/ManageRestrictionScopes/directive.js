@@ -1,30 +1,55 @@
 ﻿(function () {
 
-    var injectParams = ['$q', 'dataService'];
+    var injectParams = [];
 
-    var customScope = function ($q, dataService) {
+    var authscope = function () {
         return {
             restrict: 'A',
-            require: 'ngModel',
-            link: function (scope, element, attrs, ngModel) {
-                ngModel.$asyncValidators.unique = function (modelValue, viewValue) {
-                    var deferred = $q.defer(),
-                        currentValue = modelValue || viewValue,
-                        key = attrs.wcUniqueKey,
-
-                        dataService.addScope(attrs.clientId, ngModel.name)
-                        .then(function (result) {
-                            deferred.resolve();
-                        });
-                        return deferred.promise;
-
-                };
+            require: '^ngModel',
+            replace: true,
+            scope: {
+                canBeAdded: false,
+                canBeRemoved: false,
+                name: '@',
+                clientId: '='
+            },
+            templateUrl: 'Templates/AuthScope',
+            controller: ['$scope', '$http','config', function ($scope, $http, config) {
+                $scope.add = function() {
+                    $http.post(config.addScopeUrl, { clientId: $scope.clientId, scopeName: $scope.name },
+                        function(success) {
+                            $scope.canBeAdded = false;
+                            $scope.canBeRemoved = true;
+                        },
+                        function (error) {
+                            alert(error);
+                            $scope.canBeAdded = true;
+                            $scope.canBeRemoved = false;
+                        }
+                    );
+                }
+                $scope.remove = function() {
+                    $http.delete(config.removeScopeUrl, { clientId: $scope.clientId, scopeName: $scope.name },
+                        function (success) {
+                            $scope.canBeAdded = true;
+                            $scope.canBeRemoved = false;
+                        },
+                        function (error) {
+                            alert(error);
+                            $scope.canBeAdded = false;
+                            $scope.canBeRemoved = true;
+                        }
+                    );
+                }
+            }],
+            link: function (scope, element, attrs) {
+                // get weather details
             }
-        };
+        }
     };
 
-    wcUniqueDirective.$inject = injectParams;
+    authscope.$inject = injectParams;
 
-    angular.module('manageRestrictionScopes').directive('customScope', customScope);
+    angular.module('manageRestrictionScopes').directive('customScope', authscope);
 
 }());

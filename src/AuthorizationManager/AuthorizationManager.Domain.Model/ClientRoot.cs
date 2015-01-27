@@ -53,19 +53,19 @@ namespace AuthorizationManager.Domain.Model
         /// </summary>
         public Client Client { get; private set; }
 
-        public void AddRestrictionScope(string name)
+        public void AddRestrictionScope(string scopeName)
         {
             this.Client.ScopeRestrictions.Add(
                     new ClientScopeRestriction
                     {
-                        Scope = name
+                        Scope = scopeName
                     }
                 );
         }
 
-        public void RemoveRestrictionScope(int id)
+        public void RemoveRestrictionScope(string scopeName)
         {
-            var restrictionScope = this.Client.ScopeRestrictions.Single(x => x.Id == id);
+            var restrictionScope = this.Client.ScopeRestrictions.Single(x => x.Scope == scopeName);
             this.Client.ScopeRestrictions.Remove(restrictionScope);
         }
 

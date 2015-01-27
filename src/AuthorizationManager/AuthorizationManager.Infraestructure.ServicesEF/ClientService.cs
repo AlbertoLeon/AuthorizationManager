@@ -149,23 +149,22 @@ namespace AuthorizationManager.Infraestructure.ServicesEF
             _clientConfigurationDbContext.SaveChanges();
         }
 
-        public void AddRestrictionScope(int clientId, string name)
+        public void AddRestrictionScope(int clientId, string scopeName)
         {
             var client = _clientConfigurationDbContext.Clients.Single(x => x.Id == clientId);
             var clientRoot = new ClientRoot(client);
 
-            clientRoot.AddRestrictionScope(name);
+            clientRoot.AddRestrictionScope(scopeName);
             _clientConfigurationDbContext.SaveChanges();
         }
 
-        public void RemoveRestrictionScope(int clientId, int restrictionScopeId)
+        public void RemoveRestrictionScope(int clientId, string scopeName)
         {
             var client = _clientConfigurationDbContext.Clients.Single(x => x.Id == clientId);
             var clientRoot = new ClientRoot(client);
 
-            clientRoot.RemoveRestrictionScope(restrictionScopeId);
+            clientRoot.RemoveRestrictionScope(scopeName);
             _clientConfigurationDbContext.SaveChanges();
-
         }
     }
 }

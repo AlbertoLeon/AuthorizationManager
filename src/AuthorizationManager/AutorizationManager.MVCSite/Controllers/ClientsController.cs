@@ -109,10 +109,48 @@ namespace AutorizationManager.MVCSite.Controllers
                 DefaultScopes = JsonConvert.SerializeObject(Constants.ScopeToClaimsMapping),
                 ClientDisplayName = client.ClientName,
                 ClientId = id,
-                ScopeRestrictions = client.ScopeRestrictions.ToArray()
+                ScopeRestrictions = JsonConvert.SerializeObject(client.ScopeRestrictions.ToArray())
             };
 
             return View(clientRestrictionScopesViewModel);
+        }
+
+        [HttpPost]
+        public ActionResult AddRestrictionScope(int clientId, string scopeName)
+        {
+            bool added = false;
+            string error = String.Empty;
+            try
+            {
+                _clientService.AddRestrictionScope(clientId, scopeName);
+                added = true;
+            }
+            catch (Exception ep)
+            {
+                added = false;
+                error = ep.Message;
+            }
+
+            return Json(new{added,error});
+        }
+
+        [HttpPost]
+        public ActionResult RemoveRestrictionScope(int clientId, string scopeName)
+        {
+            bool added = false;
+            string error = String.Empty;
+            try
+            {
+                _clientService.RemoveRestrictionScope(clientId, scopeName);
+                added = true;
+            }
+            catch (Exception ep)
+            {
+                added = false;
+                error = ep.Message;
+            }
+
+            return Json(new { added, error });
         }
     }
 }

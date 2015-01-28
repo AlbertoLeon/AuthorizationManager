@@ -102,14 +102,16 @@ namespace AutorizationManager.MVCSite.Controllers
         public ActionResult EditRestrictionScope(int id)
         {
             Client client = _clientService.FindById(id);
-
+            var scopes = _scopeService.GetScopes();
 
             var clientRestrictionScopesViewModel = new ClientRestrictionScopesViewModel
             {
-                DefaultScopes = JsonConvert.SerializeObject(Constants.ScopeToClaimsMapping),
+                DefaultScopes = "[" + String.Join(",", typeof(Constants.StandardScopes).GetFields().Select(x => String.Format("\'{0}\'", x.Name))) + "]",
+
+                CustomScopes = "[" + (scopes!=null && scopes.Any()?String.Join(",", scopes.Select(x=>String.Format("\'{0}\'",x.Name)).ToArray()):"") + "]",
                 ClientDisplayName = client.ClientName,
                 ClientId = id,
-                ScopeRestrictions = JsonConvert.SerializeObject(client.ScopeRestrictions.ToArray())
+                ScopeRestrictions = "[" + (client.ScopeRestrictions != null && client.ScopeRestrictions.Any() ? String.Join(",", client.ScopeRestrictions.Select(x => String.Format("\'{0}\'", x.Scope)).ToArray()) : "") + "]"
             };
 
             return View(clientRestrictionScopesViewModel);

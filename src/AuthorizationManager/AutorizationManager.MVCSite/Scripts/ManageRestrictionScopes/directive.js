@@ -1,7 +1,5 @@
 ﻿(function () {
 
-    var injectParams = [];
-
     var authscope = function () {
         return {
             restrict: 'A',
@@ -47,9 +45,6 @@
             }
         }
     };
-
-    authscope.$inject = injectParams;
-
-    angular.module('manageRestrictionScopes').directive('customScope', authscope);
+    angular.module('manageRestrictionScopes').directive('authscope', authscope);
 
 }());

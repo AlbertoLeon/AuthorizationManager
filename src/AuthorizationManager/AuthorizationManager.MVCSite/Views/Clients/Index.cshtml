@@ -75,6 +75,7 @@
                     </td>
                     <td>
                         @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Scopes Restrictions", "EditRestrictionScope", new { id = item.Id }) |
                         @Html.ActionLink("Details", "Details", new { id = item.Id }) |
                         @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |
                         @if (!item.Enabled)
@@ -86,7 +87,6 @@
                             @Html.ActionLink("Disable", "Disable", new { id = item.Id })
                         }
                          |
-                        
                     </td>
                 </tr>
             }

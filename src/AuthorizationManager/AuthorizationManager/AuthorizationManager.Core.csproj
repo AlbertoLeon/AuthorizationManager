@@ -75,16 +75,32 @@
     <Compile Include="Migrations\201501261337192_fix-clients.Designer.cs">
       <DependentUpon>201501261337192_fix-clients.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201501291058515_scope-restriction-fk.cs" />
+    <Compile Include="Migrations\201501291058515_scope-restriction-fk.Designer.cs">
+      <DependentUpon>201501291058515_scope-restriction-fk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201501291341102_fff.cs" />
+    <Compile Include="Migrations\201501291341102_fff.Designer.cs">
+      <DependentUpon>201501291341102_fff.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201501261337192_fix-clients.resx">
       <DependentUpon>201501261337192_fix-clients.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501291058515_scope-restriction-fk.resx">
+      <DependentUpon>201501291058515_scope-restriction-fk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501291341102_fff.resx">
+      <DependentUpon>201501291341102_fff.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using AuthorizationManager.Core.FromThinktectureIdentityServer.EntityFramework.DbContexts;
@@ -160,10 +162,11 @@ namespace AuthorizationManager.Infraestructure.ServicesEF
 
         public void RemoveRestrictionScope(int clientId, string scopeName)
         {
-            var client = _clientConfigurationDbContext.Clients.Single(x => x.Id == clientId);
+            var client = _clientConfigurationDbContext.Clients.Include("ScopeRestrictions").Single(x => x.Id == clientId);
             var clientRoot = new ClientRoot(client);
 
-            clientRoot.RemoveRestrictionScope(scopeName);
+            var restrictionScope = clientRoot.RemoveRestrictionScope(scopeName);
+            _clientConfigurationDbContext.Entry(restrictionScope).State = EntityState.Deleted;
             _clientConfigurationDbContext.SaveChanges();
         }
     }

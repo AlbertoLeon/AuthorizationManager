@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthorizationManager.Domain
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthorizationManager.Infraestructure.ServicesEF", "AuthorizationManager.Infraestructure.ServicesEF\AuthorizationManager.Infraestructure.ServicesEF.csproj", "{DA082721-B546-4DF6-B5E5-A51E62241E1F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutorizationManager.MVCSite", "AutorizationManager.MVCSite\AutorizationManager.MVCSite.csproj", "{67E2DC2A-C41D-49F0-B119-3D7B4461EC46}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthorizationManager.MVCSite", "AuthorizationManager.MVCSite\AuthorizationManager.MVCSite.csproj", "{67E2DC2A-C41D-49F0-B119-3D7B4461EC46}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

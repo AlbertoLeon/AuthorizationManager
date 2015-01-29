@@ -1,0 +1,67 @@
+﻿@model AuthorizationManager.MVCSite.Models.ClientRestrictionScopesViewModel
+
+@{
+    ViewBag.Title = "Edit RestrictionScopes";
+}
+<div id="appContainer" ng-controller="managerRestrictionScopesCtrl" class="row">
+    <h2>Edit RestrictionScopes for @Model.ClientDisplayName</h2>
+    <div class="panel panel-default col-md-6 column">
+        <div class="panel-heading">Default scopes</div>
+        <div class="panel-body">
+            <div class="col-md-6 row">
+                <div class="list-group ng-cloak">
+                    <div class="list-group-item" ng-repeat="defaultScope in defaultScopes">
+                        <h4 class="list-group-item-heading"><span class="glyphicon glyphicon-ok" aria-hidden="true" ng-show="defaultScope.canBeRemoved"></span> {{defaultScope.name}}</h4>
+                        <span class="btn btn-default" ng-show="defaultScope.canBeAdded" ng-click="add(defaultScope)">Add</span>
+                        <span class="btn btn-default" ng-show="defaultScope.canBeRemoved" ng-click="remove(defaultScope)">Remove</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default col-md-6 column">
+        <div class="panel-heading">Custom scopes</div>
+        <div class="panel-body">
+
+            <div class="col-md-6 row">
+                <div class="list-group  ng-cloak">
+                    <div class="list-group-item" ng-repeat="customScope in customScopes">
+                        <h4 class="list-group-item-heading"><span class="glyphicon glyphicon-ok" aria-hidden="true" ng-show="customScope.canBeRemoved"></span> {{customScope.name}}</h4>
+                        <span class="btn btn-default" ng-show="customScope.canBeAdded" ng-click="add(customScope)">Add</span>
+                        <span class="btn btn-default" ng-show="customScope.canBeRemoved" ng-click="remove(customScope)">Remove</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+</div>
+@section scripts
+{
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
+    <script type="text/javascript">
+        var $ =jQuery.noConflict();
+        var defaultScopes = @Html.Raw(Model.DefaultScopes);
+        var customScopes = @Html.Raw(Model.CustomScopes);
+        var restrictionScopes =@Html.Raw(Model.ScopeRestrictions);
+        var clientId = @Model.ClientId;
+
+        var app = angular.module('manageRestrictionScopes', []);
+        app.value("config", {
+            defaultScopes: defaultScopes,
+            customScopes: customScopes,
+            currentScopes: restrictionScopes,
+            clientsUrl:'/api/Clients',
+            clientId: clientId
+        });
+    </script>
+    <script src="~/Scripts/ManageRestrictionScopes/controller.js"></script>
+    <script type="text/javascript">
+        angular.element(document).ready(function() {
+            var appDiv = document.getElementById("appContainer");
+            setTimeout(function() {
+                angular.bootstrap(angular.element(appDiv), ['manageRestrictionScopes']);
+            }, 1000);
+        });
+    </script>
+}

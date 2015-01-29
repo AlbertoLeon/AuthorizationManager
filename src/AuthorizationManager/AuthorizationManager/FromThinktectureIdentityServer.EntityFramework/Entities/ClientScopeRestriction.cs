@@ -15,17 +15,21 @@
  */
 
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AuthorizationManager.Core.FromThinktectureIdentityServer.EntityFramework.Entities
 {
     public class ClientScopeRestriction
     {
-        [Key]
-        public virtual int Id { get; set; }
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
 
         [Required]
         [StringLength(200)]
-        public virtual string Scope { get; set; }
+        public string Scope { get; set; }
+
+        public int ClientId { get; set; }
+
 
         public virtual Client Client { get; set; }
     }

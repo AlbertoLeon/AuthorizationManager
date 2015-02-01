@@ -7,13 +7,13 @@ namespace AuthorizationManager.Core.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.2-31219")]
-    public sealed partial class fixclients : IMigrationMetadata
+    public sealed partial class updatedefaults : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(fixclients));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(updatedefaults));
         
         string IMigrationMetadata.Id
         {
-            get { return "201501261337192_fix-clients"; }
+            get { return "201501311326256_update-defaults"; }
         }
         
         string IMigrationMetadata.Source

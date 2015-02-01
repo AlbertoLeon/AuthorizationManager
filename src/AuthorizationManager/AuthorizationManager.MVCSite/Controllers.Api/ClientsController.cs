@@ -70,5 +70,6 @@ namespace AuthorizationManager.MVCSite.Controllers.Api
                 return BadRequest();
             }
         }
+
     }
 }

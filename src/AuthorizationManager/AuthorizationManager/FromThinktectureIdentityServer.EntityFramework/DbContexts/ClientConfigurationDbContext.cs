@@ -44,7 +44,6 @@ namespace AuthorizationManager.Core.FromThinktectureIdentityServer.EntityFramewo
             modelBuilder.Entity<Client>()
                 .HasMany(x => x.ScopeRestrictions)
                 .WithRequired(x => x.Client)
-                .HasForeignKey(x=>x.ClientId)
                 .WillCascadeOnDelete();
             modelBuilder.Entity<Client>()
                 .HasMany(x => x.IdentityProviderRestrictions).WithRequired(x => x.Client).WillCascadeOnDelete();

@@ -28,9 +28,6 @@ namespace AuthorizationManager.Core.FromThinktectureIdentityServer.EntityFramewo
         [StringLength(200)]
         public string Scope { get; set; }
 
-        public int ClientId { get; set; }
-
-
         public virtual Client Client { get; set; }
     }
 }

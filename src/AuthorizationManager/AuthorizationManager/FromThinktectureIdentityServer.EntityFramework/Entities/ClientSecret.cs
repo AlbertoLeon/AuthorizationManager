@@ -30,6 +30,9 @@ namespace AuthorizationManager.Core.FromThinktectureIdentityServer.EntityFramewo
 
         public virtual string Description { get; set; }
         public virtual DateTimeOffset? Expiration { get; set; }
+
+        public string ClientSecretType { get; set; }
+
         
         public virtual Client Client { get; set; }
     }

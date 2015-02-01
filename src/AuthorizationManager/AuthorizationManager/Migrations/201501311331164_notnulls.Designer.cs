@@ -7,13 +7,13 @@ namespace AuthorizationManager.Core.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.2-31219")]
-    public sealed partial class fff : IMigrationMetadata
+    public sealed partial class notnulls : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(fff));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(notnulls));
         
         string IMigrationMetadata.Id
         {
-            get { return "201501291341102_fff"; }
+            get { return "201501311331164_notnulls"; }
         }
         
         string IMigrationMetadata.Source

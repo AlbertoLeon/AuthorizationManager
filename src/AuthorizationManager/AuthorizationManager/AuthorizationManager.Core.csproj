@@ -71,17 +71,21 @@
     <Compile Include="FromThinktectureIdentityServer\Models\IdentityProvider.cs" />
     <Compile Include="FromThinktectureIdentityServer\Models\Scope.cs" />
     <Compile Include="FromThinktectureIdentityServer\Models\ScopeClaim.cs" />
-    <Compile Include="Migrations\201501261337192_fix-clients.cs" />
-    <Compile Include="Migrations\201501261337192_fix-clients.Designer.cs">
-      <DependentUpon>201501261337192_fix-clients.cs</DependentUpon>
+    <Compile Include="Migrations\201501311314266_few.cs" />
+    <Compile Include="Migrations\201501311314266_few.Designer.cs">
+      <DependentUpon>201501311314266_few.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201501291058515_scope-restriction-fk.cs" />
-    <Compile Include="Migrations\201501291058515_scope-restriction-fk.Designer.cs">
-      <DependentUpon>201501291058515_scope-restriction-fk.cs</DependentUpon>
+    <Compile Include="Migrations\201501311326256_update-defaults.cs" />
+    <Compile Include="Migrations\201501311326256_update-defaults.Designer.cs">
+      <DependentUpon>201501311326256_update-defaults.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201501291341102_fff.cs" />
-    <Compile Include="Migrations\201501291341102_fff.Designer.cs">
-      <DependentUpon>201501291341102_fff.cs</DependentUpon>
+    <Compile Include="Migrations\201501311331164_notnulls.cs" />
+    <Compile Include="Migrations\201501311331164_notnulls.Designer.cs">
+      <DependentUpon>201501311331164_notnulls.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201501311721560_names.cs" />
+    <Compile Include="Migrations\201501311721560_names.Designer.cs">
+      <DependentUpon>201501311721560_names.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -93,14 +97,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201501261337192_fix-clients.resx">
-      <DependentUpon>201501261337192_fix-clients.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201501311314266_few.resx">
+      <DependentUpon>201501311314266_few.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201501291058515_scope-restriction-fk.resx">
-      <DependentUpon>201501291058515_scope-restriction-fk.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201501311326256_update-defaults.resx">
+      <DependentUpon>201501311326256_update-defaults.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201501291341102_fff.resx">
-      <DependentUpon>201501291341102_fff.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201501311331164_notnulls.resx">
+      <DependentUpon>201501311331164_notnulls.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501311721560_names.resx">
+      <DependentUpon>201501311721560_names.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

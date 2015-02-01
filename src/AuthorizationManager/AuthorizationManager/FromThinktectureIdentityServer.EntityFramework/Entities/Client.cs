@@ -16,6 +16,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using AuthorizationManager.FromThinktectureIdentityServer.Models;
 
@@ -37,6 +38,7 @@ namespace AuthorizationManager.Core.FromThinktectureIdentityServer.EntityFramewo
         [Key]
         public int Id { get; set; }
 
+        [DefaultValue(true)]
         public bool Enabled { get; set; }
 
         [Required]
@@ -84,7 +86,8 @@ namespace AuthorizationManager.Core.FromThinktectureIdentityServer.EntityFramewo
         public SigningKeyTypes IdentityTokenSigningKeyType { get; set; }
         public AccessTokenType AccessTokenType { get; set; }
 
-        public bool AllowLocalLogin { get; set; }
+        [DefaultValue(true)]
+        public bool EnableLocalLogin { get; set; }
 
         public virtual ICollection<ClientIdPRestriction> IdentityProviderRestrictions { get; set; }
         

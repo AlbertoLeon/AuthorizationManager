@@ -7,13 +7,13 @@ namespace AuthorizationManager.Core.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.2-31219")]
-    public sealed partial class scoperestrictionfk : IMigrationMetadata
+    public sealed partial class names : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(scoperestrictionfk));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(names));
         
         string IMigrationMetadata.Id
         {
-            get { return "201501291058515_scope-restriction-fk"; }
+            get { return "201501311721560_names"; }
         }
         
         string IMigrationMetadata.Source

@@ -59,7 +59,7 @@ namespace AuthorizationManager.Domain.Model
                     new ClientScopeRestriction
                     {
                         Scope = scopeName,
-                        ClientId = this.Client.Id
+                        // ClientId = this.Client.Id
                     }
                 );
         }

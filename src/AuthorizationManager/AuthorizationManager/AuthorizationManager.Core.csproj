@@ -46,6 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClientMigrations\201502021032387_Initial.cs" />
+    <Compile Include="ClientMigrations\201502021032387_Initial.Designer.cs">
+      <DependentUpon>201502021032387_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClientMigrations\Configuration.cs" />
     <Compile Include="FromThinktectureIdentityServer.EntityFramework\DbContexts\BaseDbContext.cs" />
     <Compile Include="FromThinktectureIdentityServer.EntityFramework\DbContexts\ClientConfigurationDbContext.cs" />
     <Compile Include="FromThinktectureIdentityServer.EntityFramework\DbContexts\OperationalDbContext.cs" />
@@ -71,24 +76,12 @@
     <Compile Include="FromThinktectureIdentityServer\Models\IdentityProvider.cs" />
     <Compile Include="FromThinktectureIdentityServer\Models\Scope.cs" />
     <Compile Include="FromThinktectureIdentityServer\Models\ScopeClaim.cs" />
-    <Compile Include="Migrations\201501311314266_few.cs" />
-    <Compile Include="Migrations\201501311314266_few.Designer.cs">
-      <DependentUpon>201501311314266_few.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201501311326256_update-defaults.cs" />
-    <Compile Include="Migrations\201501311326256_update-defaults.Designer.cs">
-      <DependentUpon>201501311326256_update-defaults.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201501311331164_notnulls.cs" />
-    <Compile Include="Migrations\201501311331164_notnulls.Designer.cs">
-      <DependentUpon>201501311331164_notnulls.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201501311721560_names.cs" />
-    <Compile Include="Migrations\201501311721560_names.Designer.cs">
-      <DependentUpon>201501311721560_names.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScopeMigrations\201502021028483_Initial.cs" />
+    <Compile Include="ScopeMigrations\201502021028483_Initial.Designer.cs">
+      <DependentUpon>201502021028483_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScopeMigrations\Configuration.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -97,17 +90,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201501311314266_few.resx">
-      <DependentUpon>201501311314266_few.cs</DependentUpon>
+    <EmbeddedResource Include="ClientMigrations\201502021032387_Initial.resx">
+      <DependentUpon>201502021032387_Initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201501311326256_update-defaults.resx">
-      <DependentUpon>201501311326256_update-defaults.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201501311331164_notnulls.resx">
-      <DependentUpon>201501311331164_notnulls.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201501311721560_names.resx">
-      <DependentUpon>201501311721560_names.cs</DependentUpon>
+    <EmbeddedResource Include="ScopeMigrations\201502021028483_Initial.resx">
+      <DependentUpon>201502021028483_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

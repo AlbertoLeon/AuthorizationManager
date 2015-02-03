@@ -21,6 +21,10 @@ namespace AuthorizationManager.Core.FromThinktectureIdentityServer.EntityFramewo
 {
     public class ScopeConfigurationDbContext : BaseDbContext
     {
+        public ScopeConfigurationDbContext()
+        {
+            
+        }
         public ScopeConfigurationDbContext(string connectionString)
             : base(connectionString)
         {

@@ -38,13 +38,32 @@ namespace AuthorizationManager.Domain.Model
         protected void CreateClient(Flows flow, string clientName, string clientUri)
         {
             var client = new Client();
+            client.Enabled = true;
             client.ClientId = Guid.NewGuid().ToString();
             client.ClientName = clientName;
             client.ClientUri = clientUri;
             client.Flow = flow;
+            client.RequireConsent = false;
+            client.AllowRememberConsent = false;
+            
+            client.IdentityTokenLifetime = 300; // 5 minutes
+            client.AccessTokenLifetime = 3600; // 1 hour
+            client.AuthorizationCodeLifetime = 300; // 5 minutes
+            client.AbsoluteRefreshTokenLifetime = 2592000; // 30 days
+            client.SlidingRefreshTokenLifetime = 1296000; // 15 days
+            client.RefreshTokenUsage = TokenUsage.OneTimeOnly;
+            client.RefreshTokenExpiration = TokenExpiration.Absolute;
+            client.AccessTokenType = AccessTokenType.Jwt;
+            client.EnableLocalLogin = true;
+            client.IncludeJwtId = false;
+            client.AlwaysSendClientClaims = false;
+
+
+
+
+
 
             this.Client = client;
-
             client.ClientSecrets.Add(this.GenerateSecret());
         }
 

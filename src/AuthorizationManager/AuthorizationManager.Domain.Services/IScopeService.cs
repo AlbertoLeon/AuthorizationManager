@@ -15,12 +15,14 @@ namespace AuthorizationManager.Domain.Services
 
         void AddClaim(int scopeId, string name, string description, bool allwaysIncludeInIdentityToken);
 
-        void RemoveClaim(int scopeId, int claimId);
+        void RemoveClaim(int scopeId, string claimName);
 
         IEnumerable<Scope> GetScopes();
 
         Scope FindById(int id);
 
         void UpdateScope(int id, string name, string displayName, string description);
+        
+        IEnumerable<ScopeClaim> GetClaims(int id);
     }
 }

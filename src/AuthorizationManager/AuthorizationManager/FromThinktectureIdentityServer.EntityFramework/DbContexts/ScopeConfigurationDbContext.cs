@@ -32,6 +32,8 @@ namespace AuthorizationManager.Core.FromThinktectureIdentityServer.EntityFramewo
 
         public DbSet<Scope> Scopes { get; set; }
 
+        public DbSet<ScopeClaim> ScopeClaims { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

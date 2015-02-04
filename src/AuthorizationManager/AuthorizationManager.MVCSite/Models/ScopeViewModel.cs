@@ -28,5 +28,8 @@ namespace AuthorizationManager.MVCSite.Models
         public string DisplayName { get; set; }
 
         public string Description { get; set; }
+
+        public string TypeName { get; set; }
+
     }
 }

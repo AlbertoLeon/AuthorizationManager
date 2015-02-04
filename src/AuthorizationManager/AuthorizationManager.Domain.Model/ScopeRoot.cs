@@ -49,6 +49,10 @@ namespace AuthorizationManager.Domain.Model
             scopeRoot.Scope.DisplayName = displayName;
             scopeRoot.Scope.Description = description;
             scopeRoot.Scope.Type = (int)ScopeType.Resource;
+            scopeRoot.Scope.Enabled = true;
+            scopeRoot.Scope.Emphasize = true;
+            scopeRoot.Scope.IncludeAllClaimsForUser = false;
+            scopeRoot.Scope.ShowInDiscoveryDocument = false;
 
             return scopeRoot;
         }

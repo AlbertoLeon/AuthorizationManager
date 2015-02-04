@@ -58,11 +58,6 @@ namespace AuthorizationManager.Domain.Model
             client.IncludeJwtId = false;
             client.AlwaysSendClientClaims = false;
 
-
-
-
-
-
             this.Client = client;
             client.ClientSecrets.Add(this.GenerateSecret());
         }

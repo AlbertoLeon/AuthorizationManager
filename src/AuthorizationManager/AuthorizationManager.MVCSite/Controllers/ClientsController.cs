@@ -106,9 +106,9 @@ namespace AuthorizationManager.MVCSite.Controllers
 
             var clientRestrictionScopesViewModel = new ClientRestrictionScopesViewModel
             {
-                DefaultScopes = "[" + String.Join(",", typeof(Constants.StandardScopes).GetFields().Select(x => String.Format("\'{0}\'", x.Name))) + "]",
+                DefaultScopes = "[" + String.Join(",", typeof(Constants.StandardScopes).GetFields().Select(x => String.Format("\'{0}\'", x.GetRawConstantValue()))) + "]",
 
-                CustomScopes = "[" + (scopes!=null && scopes.Any()?String.Join(",", scopes.Select(x=>String.Format("\'{0}\'",x.Name)).ToArray()):"") + "]",
+                CustomScopes = "[" + (scopes != null && scopes.Any() ? String.Join(",", scopes.Select(x => String.Format("{{id:\'{0}\',name:\'{0}\'}}", x.DisplayName)).ToArray()) : "") + "]",
                 ClientDisplayName = client.ClientName,
                 ClientId = id,
                 ScopeRestrictions = "[" + (client.ScopeRestrictions != null && client.ScopeRestrictions.Any() ? String.Join(",", client.ScopeRestrictions.Select(x => String.Format("\'{0}\'", x.Scope)).ToArray()) : "") + "]"

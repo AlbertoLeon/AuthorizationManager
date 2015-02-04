@@ -5,7 +5,9 @@ using System.Web;
 using System.Web.Mvc;
 using AuthorizationManager.Core.FromThinktectureIdentityServer.EntityFramework.Entities;
 using AuthorizationManager.Domain.Services;
+using AuthorizationManager.FromThinktectureIdentityServer.Models;
 using AuthorizationManager.MVCSite.Models;
+using AuthorizationManager.Core.FromThinktectureIdentityServer;
 
 namespace AuthorizationManager.MVCSite.Controllers
 {
@@ -28,7 +30,8 @@ namespace AuthorizationManager.MVCSite.Controllers
                     Id = scope.Id,
                     Description = scope.Description,
                     DisplayName = scope.DisplayName,
-                    Name = scope.Name
+                    Name = scope.Name,
+                    TypeName = ((ScopeType)scope.Type).ToString()
                 };
             }));
         }
@@ -56,7 +59,8 @@ namespace AuthorizationManager.MVCSite.Controllers
                 Id = scope.Id,
                 Description = scope.Description,
                 DisplayName = scope.DisplayName,
-                Name = scope.Name
+                Name = scope.Name,
+                TypeName = ((ScopeType)scope.Type).ToString()
             });
         }
 
@@ -76,7 +80,8 @@ namespace AuthorizationManager.MVCSite.Controllers
                 Id = scope.Id,
                 Description = scope.Description,
                 DisplayName = scope.DisplayName,
-                Name = scope.Name
+                Name = scope.Name,
+                TypeName = ((ScopeType)scope.Type).ToString()
             });
         }
 
@@ -90,7 +95,8 @@ namespace AuthorizationManager.MVCSite.Controllers
                 Id = scope.Id,
                 Description = scope.Description,
                 DisplayName = scope.DisplayName,
-                Name = scope.Name
+                Name = scope.Name,
+                TypeName = ((ScopeType)scope.Type).ToString()
             });
         }
 
@@ -99,6 +105,23 @@ namespace AuthorizationManager.MVCSite.Controllers
         {
             _scopeService.DeleteScope(id);
             return RedirectToAction("Index");
+        }
+
+        public ActionResult EditClaims(int id)
+        {
+            Scope scope = _scopeService.FindById(id);
+            var claims = _scopeService.GetClaims(id);
+
+            var claimScopesViewModel = new ClaimScopesViewModel
+            {
+                DefaultClaims = "[" + String.Join(",", typeof(Constants.ClaimTypes).GetFields().Select(x => String.Format("{0}", x.GetRawConstantValue()))) + "]",
+
+                CurrentClaims = "[" + (claims != null && claims.Any() ? String.Join(",", claims.Select(x => String.Format("{{id:\'{0}\',name:\'{1}\'}}", x.Id, x.Name)).ToArray()) : "") + "]",
+                ScopeName = scope.Name,
+                ScopeId = id,
+            };
+
+            return View(claimScopesViewModel);
         }
     }
 }

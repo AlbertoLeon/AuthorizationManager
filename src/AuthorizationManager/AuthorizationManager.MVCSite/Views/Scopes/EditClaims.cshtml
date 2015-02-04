@@ -1,0 +1,51 @@
+﻿@model AuthorizationManager.MVCSite.Models.ClaimScopesViewModel
+
+@{
+    ViewBag.Title = "Edit RestrictionScopes";
+}
+<div id="appContainer" ng-controller="managerClaimScopesCtrl" class="row">
+    <h2>Edit Claims for @Model.ScopeName</h2>
+    <div class="panel panel-default col-md-6 column">
+        <div class="panel-heading">Default claims</div>
+        <div class="panel-body">
+            <div class="col-md-6 row">
+                <div class="list-group ng-cloak">
+                    <div class="list-group-item" ng-repeat="defaultClaim in defaultClaims">
+                        <h4 class="list-group-item-heading"><span class="glyphicon glyphicon-ok" aria-hidden="true" ng-show="defaultClaim.canBeRemoved"></span> {{defaultClaim.name}}</h4>
+                        <span class="btn btn-default" ng-show="defaultClaim.canBeAdded" ng-click="add(defaultClaim)">Add</span>
+                        <span class="btn btn-default" ng-show="defaultClaim.canBeRemoved" ng-click="remove(defaultClaim)">Remove</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+@section scripts
+{
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
+    <script type="text/javascript">
+        var $ =jQuery.noConflict();
+        var defaultClaims = @Html.Raw(Model.DefaultClaims);
+        var currentClaims =@Html.Raw(Model.CurrentClaims);
+        var scopeId = @Model.ScopeId;
+
+        var app = angular.module('manageClaimScopes', []);
+        app.value("config", {
+            defaultClaims: defaultClaims,
+            currentClaims: currentClaims,
+            scopesUrl:'/api/Scopes/'+ scopeId + "/Claims",
+            scopeId: scopeId
+        });
+    </script>
+    <script src="~/Scripts/ManageClaimScopes/controller.js"></script>
+    <script type="text/javascript">
+        angular.element(document).ready(function() {
+            var appDiv = document.getElementById("appContainer");
+            setTimeout(function() {
+                angular.bootstrap(angular.element(appDiv), ['manageClaimScopes']);
+            }, 1000);
+        });
+    </script>
+}

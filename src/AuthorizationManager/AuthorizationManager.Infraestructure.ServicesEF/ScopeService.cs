@@ -47,13 +47,13 @@ namespace AuthorizationManager.Infraestructure.ServicesEF
 
         }
 
-        public void RemoveClaim(int scopeId, int claimId)
+        public void RemoveClaim(int scopeId, string claimName)
         {
             var scope = _scopeConfigurationDbContext.Scopes.Single(x => x.Id == scopeId);
-            var claim = scope.ScopeClaims.Single(x => x.Id == claimId);
+            var claim = scope.ScopeClaims.Single(x => x.Name == claimName);
 
             scope.ScopeClaims.Remove(claim);
-
+            _scopeConfigurationDbContext.ScopeClaims.Remove(claim);
             _scopeConfigurationDbContext.SaveChanges();
         }
 
@@ -79,6 +79,15 @@ namespace AuthorizationManager.Infraestructure.ServicesEF
 
             _scopeConfigurationDbContext.SaveChanges();
 
+        }
+
+        public IEnumerable<ScopeClaim> GetClaims(int id)
+        {
+            var scope = _scopeConfigurationDbContext.Scopes.Include("ScopeClaims").Single(x => x.Id == id);
+
+            var claims = scope.ScopeClaims.ToList();
+
+            return claims;
         }
     }
 }
